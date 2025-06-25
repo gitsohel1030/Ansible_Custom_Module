@@ -9,14 +9,24 @@
         dependencies:
           - type: service
             name: mysql
+            retries: 3
+            delay: 5
+            auto_fix: true
           - type: service
             name: redis
+            retries: 3
+            delay: 5
+            auto_fix: true
           - type: port
             host: 127.0.0.1
             port: 3306     # MySQL port
+            retries: 3
+            delay: 5
           - type: port
             host: 127.0.0.1
             port: 6379     # Redis port
+            retries: 3
+            delay: 5
       register: dep_check
 
     - name: Print dependency check result

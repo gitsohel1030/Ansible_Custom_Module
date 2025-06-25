@@ -1,0 +1,20 @@
+namespace: sohel
+name: dependency_checker
+version: 1.0.0
+readme: README.md
+authors:
+  - Sohel Mujawar
+description: >
+  A cross-platform custom Ansible module to validate service, port, and ping dependencies
+  before restarting critical services. Includes retry, auto-fix, and logging support.
+license: 
+  - MIT
+repository: https://github.com/sohelmujawar/ansible-dependency-checker
+tags:
+  - ansible
+  - module
+  - service
+  - dependency
+  - healthcheck
+  - devops
+  - custom

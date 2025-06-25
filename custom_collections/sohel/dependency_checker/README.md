@@ -14,7 +14,6 @@ A custom Ansible module to check service, port, and ping dependencies before res
 - name: Check dependencies
   sohel.dependency_checker.service_dependency_checker:
     service: nginx
-    log_file: /tmp/dep_check.log
     dependencies:
       - type: service
         name: redis

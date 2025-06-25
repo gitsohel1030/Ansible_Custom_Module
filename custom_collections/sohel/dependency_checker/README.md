@@ -6,7 +6,6 @@ A custom Ansible module to check service, port, and ping dependencies before res
 - Works on Linux and Windows
 - Retry and delay support
 - Optional auto-fix for services
-- Logging to file
 
 ## Usage
 

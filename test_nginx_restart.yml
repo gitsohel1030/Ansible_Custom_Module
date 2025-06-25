@@ -1,0 +1,31 @@
+- name: Test dependency check before restarting nginx
+  hosts: localhost
+  gather_facts: no
+  tasks:
+
+    - name: Check that MySQL and Redis are running before restarting Nginx
+      service_dependency_checker:
+        service: nginx
+        dependencies:
+          - type: service
+            name: mysql
+          - type: service
+            name: redis
+          - type: port
+            host: 127.0.0.1
+            port: 3306     # MySQL port
+          - type: port
+            host: 127.0.0.1
+            port: 6379     # Redis port
+      register: dep_check
+
+    - name: Print dependency check result
+      debug:
+        var: dep_check
+
+    - name: Restart Nginx only if dependencies are healthy
+      become: yes
+      ansible.builtin.systemd:
+        name: nginx
+        state: restarted
+      when: dep_check.failed_dependencies | length == 0
